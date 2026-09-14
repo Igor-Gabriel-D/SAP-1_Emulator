@@ -2,6 +2,12 @@
 #define CPU_HPP
 
 #include <cstdint>
+#include "memory.hpp"
+
+enum class CycleState{
+    T1,
+    T2
+};
 
 class CPU{
 private:
@@ -11,10 +17,20 @@ private:
     uint8_t A;
     uint8_t B;
     uint8_t OUT;
+
+    CycleState cycle_state;
 public:
     CPU();
 
     void reset();
+    void cycle(Memory& memory);
+
+    uint8_t get_pc()  const;
+    uint8_t get_mar() const;
+    uint8_t get_ir()  const;
+    uint8_t get_a()   const;
+    uint8_t get_b()   const;
+    uint8_t get_out() const;
 };
 
 #endif
