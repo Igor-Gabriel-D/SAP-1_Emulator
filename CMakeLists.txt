@@ -7,4 +7,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(sap1
     src/main.cpp
+    src/memory.cpp
 )
