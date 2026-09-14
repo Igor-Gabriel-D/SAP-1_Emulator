@@ -2,6 +2,7 @@
 #define MEMORY_HPP
 
 #include <cstdint>
+#include <stdexcept>
 
 class Memory{
 private:
