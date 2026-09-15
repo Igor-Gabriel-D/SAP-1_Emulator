@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include "memory.hpp"
+#include "instruction.hpp"
 
 enum class CycleState{
     T1,
@@ -24,6 +25,7 @@ public:
 
     void reset();
     void cycle(Memory& memory);
+    Instruction decode() const;
 
     uint8_t get_pc()  const;
     uint8_t get_mar() const;

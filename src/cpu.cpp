@@ -30,6 +30,15 @@ void CPU::cycle(Memory& memory){
     }
 }
 
+Instruction CPU::decode() const{
+    Instruction instruction;
+
+    instruction.opcode = static_cast<Opcode>( (IR >> 4) & 0x0F );
+    instruction.operand = IR & 0x0F;
+
+    return instruction;
+}
+
 uint8_t CPU::get_pc()  const { return PC; }
 uint8_t CPU::get_mar() const { return MAR; }
 uint8_t CPU::get_ir()  const { return IR; }
