@@ -26,6 +26,8 @@ public:
     void reset();
     void cycle(Memory& memory);
     Instruction decode() const;
+    void execute(const Instruction& instruction, Memory& memory );
+
 
     uint8_t get_pc()  const;
     uint8_t get_mar() const;
@@ -33,6 +35,9 @@ public:
     uint8_t get_a()   const;
     uint8_t get_b()   const;
     uint8_t get_out() const;
+
+    void set_a(uint8_t value);
 };
+
 
 #endif

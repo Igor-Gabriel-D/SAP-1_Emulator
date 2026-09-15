@@ -3,23 +3,25 @@
 #include "cpu.hpp"
 
 int main(){
-    CPU cpu;
     Memory memory;
-    memory.write(0x00, 0x42);
+    CPU cpu;
 
-    cpu.cycle(memory); // T1
-    cpu.cycle(memory); // T2
+    cpu.set_a(0x42);
 
-    Instruction instruction = cpu.decode();
+    Instruction instruction;
+    instruction.opcode = Opcode::OUT;
+    instruction.operand = 0x0;
 
-    std::cout << "Opcode  = 0x"
+    cpu.execute(instruction, memory);
+
+    std::cout << "A   = 0x"
           << std::hex
-          << static_cast<int>(instruction.opcode)
+          << static_cast<int>(cpu.get_a())
           << '\n';
 
-    std::cout << "Operand = 0x"
+    std::cout << "OUT = 0x"
           << std::hex
-          << static_cast<int>(instruction.operand)
+          << static_cast<int>(cpu.get_out())
           << '\n';
     return 0;
 }

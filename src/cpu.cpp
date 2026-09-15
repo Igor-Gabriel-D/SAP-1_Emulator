@@ -39,9 +39,21 @@ Instruction CPU::decode() const{
     return instruction;
 }
 
+void CPU::execute(const Instruction& instruction, Memory& memory)
+{
+    switch (instruction.opcode)
+    {
+        case Opcode::OUT:
+            OUT = A;
+            break;
+    }
+}
+
 uint8_t CPU::get_pc()  const { return PC; }
 uint8_t CPU::get_mar() const { return MAR; }
 uint8_t CPU::get_ir()  const { return IR; }
 uint8_t CPU::get_a()   const { return A; }
 uint8_t CPU::get_b()   const { return B; }
 uint8_t CPU::get_out() const { return OUT; }
+
+void CPU::set_a(uint8_t value){ A = value; }
