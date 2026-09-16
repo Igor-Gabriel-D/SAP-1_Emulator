@@ -16,9 +16,13 @@ void CPU::reset(){
     cycle_state = CycleState::T1;
 
     current_instruction = {};
+
+    running = true;
 }
 
 void CPU::cycle(Memory& memory){
+    
+    if (!running) return;
 
     switch(cycle_state){
     case CycleState::T1:
@@ -66,6 +70,9 @@ void CPU::execute(const Instruction& instruction, Memory& memory)
         case Opcode::OUT:
             OUT = A;
             break;
+        case Opcode::HLT:
+            running = false;
+            break;
     }
 }
 
@@ -77,3 +84,7 @@ uint8_t CPU::get_b()   const { return B; }
 uint8_t CPU::get_out() const { return OUT; }
 
 void CPU::set_a(uint8_t value){ A = value; }
+
+bool CPU::is_running(){
+    return running;
+}

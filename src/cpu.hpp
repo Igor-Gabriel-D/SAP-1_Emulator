@@ -26,6 +26,8 @@ private:
     Instruction current_instruction;
 
     ALU alu;
+
+    bool running;
 public:
     CPU();
 
@@ -43,6 +45,8 @@ public:
     uint8_t get_out() const;
 
     void set_a(uint8_t value);
+
+    bool is_running();
 };
 
 
