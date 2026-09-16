@@ -19,6 +19,7 @@ void CPU::reset(){
 }
 
 void CPU::cycle(Memory& memory){
+
     switch(cycle_state){
     case CycleState::T1:
 	    MAR = PC;
@@ -53,6 +54,14 @@ void CPU::execute(const Instruction& instruction, Memory& memory)
     {
         case Opcode::LDA:
             A = memory.read(instruction.operand);
+            break;
+        case Opcode::ADD:
+            B = memory.read(instruction.operand);
+            A = alu.add(A, B);
+            break;
+        case Opcode::SUB:
+            B = memory.read(instruction.operand);
+            A = alu.sub(A, B);
             break;
         case Opcode::OUT:
             OUT = A;

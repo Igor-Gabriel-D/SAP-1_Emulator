@@ -9,4 +9,5 @@ add_executable(sap1
     src/main.cpp
     src/memory.cpp
     src/cpu.cpp
+    src/alu.cpp
 )

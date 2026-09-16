@@ -8,9 +8,13 @@ int main(){
 
     //memory.write(0x00, 0xE0);
     //cpu.set_a(0x42);
-    memory.write(0x00, 0x05);
-    memory.write(0x05, 0x37);
+    //memory.write(0x00, 0x05);
+    //memory.write(0x05, 0x37);
+    memory.write(0x00, 0x15);
+    memory.write(0x05, 0x07);
 
+    cpu.set_a(0x10);
+    
     cpu.cycle(memory); // T1
     cpu.cycle(memory); // T2
     cpu.cycle(memory); // T3
