@@ -4,6 +4,7 @@
 #include <cstdint>
 #include "memory.hpp"
 #include "instruction.hpp"
+#include "alu.hpp"
 
 enum class CycleState{
     T1,
@@ -23,6 +24,8 @@ private:
     CycleState cycle_state;
 
     Instruction current_instruction;
+
+    ALU alu;
 public:
     CPU();
 
