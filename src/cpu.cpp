@@ -61,7 +61,7 @@ void CPU::execute(const Instruction& instruction, Memory& memory)
             break;
         case Opcode::SUB:
             B = memory.read(instruction.operand);
-            A = alu.sub(A, B);
+            A = alu.sub(A, B);  
             break;
         case Opcode::OUT:
             OUT = A;
