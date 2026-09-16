@@ -9,7 +9,9 @@
 enum class CycleState{
     T1,
     T2,
-    T3
+    T3,
+    T4,
+    T5
 };
 
 class CPU{

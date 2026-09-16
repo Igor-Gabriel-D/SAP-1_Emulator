@@ -10,7 +10,7 @@ int main(){
     memory.write(0x01, 0xE0); // OUT
     memory.write(0x02, 0xF0); // HLT
 
-    memory.write(0x05, 0x37);
+    memory.write(0x05, 0x03);
 
     while (cpu.is_running())
     {
