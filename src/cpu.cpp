@@ -14,19 +14,27 @@ void CPU::reset(){
     OUT = 0x00;
 
     cycle_state = CycleState::T1;
+
+    current_instruction = {};
 }
 
 void CPU::cycle(Memory& memory){
     switch(cycle_state){
-    	case CycleState::T1:
+    case CycleState::T1:
 	    MAR = PC;
 	    cycle_state = CycleState::T2;
 	    break;
 	case CycleState::T2:
 	    IR = memory.read(MAR);
 	    PC++;
-	    cycle_state = CycleState::T1;
+        current_instruction = decode();
+	    cycle_state = CycleState::T3;
 	    break;
+    case CycleState::T3:
+        execute(current_instruction, memory);
+
+        cycle_state = CycleState::T1;
+        break;
     }
 }
 
@@ -43,6 +51,9 @@ void CPU::execute(const Instruction& instruction, Memory& memory)
 {
     switch (instruction.opcode)
     {
+        case Opcode::LDA:
+            A = memory.read(instruction.operand);
+            break;
         case Opcode::OUT:
             OUT = A;
             break;

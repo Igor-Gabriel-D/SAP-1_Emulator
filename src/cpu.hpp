@@ -7,7 +7,8 @@
 
 enum class CycleState{
     T1,
-    T2
+    T2,
+    T3
 };
 
 class CPU{
@@ -20,6 +21,8 @@ private:
     uint8_t OUT;
 
     CycleState cycle_state;
+
+    Instruction current_instruction;
 public:
     CPU();
 

@@ -6,14 +6,15 @@ int main(){
     Memory memory;
     CPU cpu;
 
-    cpu.set_a(0x42);
+    //memory.write(0x00, 0xE0);
+    //cpu.set_a(0x42);
+    memory.write(0x00, 0x05);
+    memory.write(0x05, 0x37);
 
-    Instruction instruction;
-    instruction.opcode = Opcode::OUT;
-    instruction.operand = 0x0;
-
-    cpu.execute(instruction, memory);
-
+    cpu.cycle(memory); // T1
+    cpu.cycle(memory); // T2
+    cpu.cycle(memory); // T3
+    
     std::cout << "A   = 0x"
           << std::hex
           << static_cast<int>(cpu.get_a())
